@@ -1,5 +1,5 @@
 # GUIBUILDER FILE Build 146
-# Created: 2025-12-20 16:22:59 by GUI Builder Build 146
+# Created: 2025-12-20 17:04:13 by GUI Builder Build 146
 language tkinter 8.4
 widget {Tk frame} f {
 	geometry min_column {40 27 40 40 40 10 40 40 40 40 40}
@@ -17,6 +17,8 @@ widget {Tk frame} f {
 	data level 0
 }
 widget {Tk checkbutton} _checkbutton_1 {
+	configure -command chg_bin
+	configure -text _checkbutton_1
 	geometry -column 2
 	geometry -columnspan 1
 	geometry -row 3
@@ -28,6 +30,8 @@ widget {Tk checkbutton} _checkbutton_1 {
 	data TYPE {Tk checkbutton}
 }
 widget {Tk checkbutton} _checkbutton_2 {
+	configure -command chg_bin
+	configure -text _checkbutton_2
 	geometry -column 3
 	geometry -columnspan 1
 	geometry -row 3
@@ -63,6 +67,8 @@ widget {Tk label} _label_3 {
 	data TYPE {Tk label}
 }
 widget {Tk checkbutton} _checkbutton_3 {
+	configure -command chg_bin
+	configure -text _checkbutton_3
 	geometry -column 4
 	geometry -columnspan 1
 	geometry -row 3
@@ -86,6 +92,8 @@ widget {Tk label} _label_4 {
 	data TYPE {Tk label}
 }
 widget {Tk checkbutton} _checkbutton_4 {
+	configure -command chg_bin
+	configure -text _checkbutton_4
 	geometry -column 5
 	geometry -columnspan 1
 	geometry -row 3
@@ -121,6 +129,8 @@ widget {Tk label} _label_6 {
 	data TYPE {Tk label}
 }
 widget {Tk checkbutton} _checkbutton_6 {
+	configure -command chg_bin
+	configure -text _checkbutton_6
 	geometry -column 7
 	geometry -columnspan 1
 	geometry -row 3
@@ -132,6 +142,8 @@ widget {Tk checkbutton} _checkbutton_6 {
 	data TYPE {Tk checkbutton}
 }
 widget {Tk checkbutton} _checkbutton_7 {
+	configure -command chg_bin
+	configure -text _checkbutton_7
 	geometry -column 8
 	geometry -columnspan 1
 	geometry -row 3
@@ -143,6 +155,8 @@ widget {Tk checkbutton} _checkbutton_7 {
 	data TYPE {Tk checkbutton}
 }
 widget {Tk checkbutton} _checkbutton_8 {
+	configure -command chg_bin
+	configure -text _checkbutton_8
 	geometry -column 9
 	geometry -columnspan 1
 	geometry -row 3
@@ -154,6 +168,8 @@ widget {Tk checkbutton} _checkbutton_8 {
 	data TYPE {Tk checkbutton}
 }
 widget {Tk checkbutton} _checkbutton_9 {
+	configure -command chg_bin
+	configure -text _checkbutton_9
 	geometry -column 10
 	geometry -columnspan 1
 	geometry -row 3
@@ -323,7 +339,7 @@ widget {Tk label} _label_1 {
 }
 widget {Tk label} _label_19 {
 	configure -font {{MS Sans Serif} 12}
-	configure -text 0000.0000
+	configure -text {"0000.0000"}
 	geometry -column 11
 	geometry -columnspan 1
 	geometry -row 4
