@@ -9,7 +9,7 @@
  The 'main' function is reserved.
 """
 
-from Tkinter import *
+from tkinter import *
 from binartrainer_ui import Binartrainer
 
 # BEGIN USER CODE global
@@ -91,6 +91,11 @@ class CustomBinartrainer(Binartrainer):
     # END CALLBACK CODE
 
     # BEGIN USER CODE class
+    def chg_bin(self):
+        checkbox128var = BooleanVar()
+        self.chk126["variable"] = checkbox128var
+        
+        print(checkbox128var)
 
     # END USER CODE class
 
@@ -100,7 +105,7 @@ def main():
     try: userinit()
     except NameError: pass
     root = Tk()
-    demo = CustomBinartrainer(root)
+    trainer = CustomBinartrainer(root)
     root.title('binartrainer')
     try: run()
     except NameError: pass
