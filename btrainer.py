@@ -59,7 +59,6 @@ class Btrainer:
             wertigkeit //= 2
             werthex //= 2
             if i == 3:       # hex 1. Ziffer
-                print(erg_hex)
                 str_erg_hex = char_hex[erg_hex]
                 werthex = 8
                 erg_hex = 0
