@@ -36,6 +36,9 @@ class Btrainer:
         self.lbl_ges_dez = tk.Label(root, text="0", font=(self.font, self.fontsize))
         self.lbl_ges_dez.grid(row=1, column=9)
 
+        self.lbl_ges_hex = tk.Label(root, text="00", font=(self.font, self.fontsize))
+        self.lbl_ges_hex.grid(row=2, column=9)
+
         self.lbl_ges_bin = tk.Label(root, text="0000.0000", font=(self.font, self.fontsize))
         self.lbl_ges_bin.grid(row=3, column=9)
 
@@ -43,14 +46,26 @@ class Btrainer:
     
     def cb_click(self):
         erg_dez = 0
+        erg_hex = 0
         wertigkeit = 128
         erg_bin = ""
+        char_hex = "0123456789ABCDEF"
+        werthex = 8        
         for i in range(8):
             wert = self.var_cb[i].get()
-            erg_bin = erg_bin +str(wert) 
+            erg_bin = erg_bin +str(wert)
+            erg_hex += werthex * wert
             erg_dez += wertigkeit * wert
             wertigkeit //= 2
+            werthex //= 2
+            if i == 3:       # hex 1. Ziffer
+                print(erg_hex)
+                str_erg_hex = char_hex[erg_hex]
+                werthex = 8
+                erg_hex = 0
             self.elements[i][2].config(text = str(wert))
+        str_erg_hex += char_hex[erg_hex]
+        self.lbl_ges_hex.config(text=str_erg_hex)
         self.lbl_ges_dez.config(text=str(erg_dez))
         erg_bin = erg_bin[:4]+"."+erg_bin[4:]
         self.lbl_ges_bin.config(text=str(erg_bin))
