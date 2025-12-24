@@ -13,14 +13,14 @@ class Btrainer:
         y = 1
         self.root = tk.Tk()
         self.root.title="BFW Rechner"
-        self.var_cb = [0] * 8
+        self.var_cb = []
         wertigkeit = 128
         for i in range(8):
             lbl1 = tk.Label(self.root, text=str(wertigkeit), font=(self.font, self.fontsize))
             lbl1.grid(column=x+i, row=y)
 
             wertigkeit //= 2
-            self.var_cb[i] = tk.IntVar()
+            self.var_cb.append(tk.IntVar())
             cb1 = tk.Checkbutton(self.root, 
                 text="", 
                 font=(self.font, self.fontsize), 
@@ -51,15 +51,16 @@ class Btrainer:
         self.root.mainloop()
     
     def cal_erg(self):
+        print(self)
         erg_dez = 0
         erg_hex = 0
         wertigkeit = 128
         erg_bin = ""
         char_hex = "0123456789ABCDEF"
-        werthex = 8        
+        werthex = 8   
         for i in range(8):
             wert = self.var_cb[i].get()
-            erg_bin = erg_bin +str(wert)
+            erg_bin = erg_bin + str(wert)
             erg_hex += werthex * wert
             erg_dez += wertigkeit * wert
             wertigkeit //= 2
@@ -120,7 +121,43 @@ class Btester(Btrainer):
         self.cal_erg()
 
 class Main_app():
-    pass
 
-test0 = Btester()
-# test1 = Btrainer()
+    def newfile(self):
+        pass
+
+    def openfile(self):
+        pass
+    
+    def about(self):
+        pass
+
+    def training(self):
+        test1 = Btrainer()  
+
+    def __init__(self):
+        self.root = tk.Tk()
+        self.root.title="BFW Trainingscenter"
+
+        menu = tk.Menu(self.root)
+        self.root.config(menu=menu)
+
+        filemenu = tk.Menu(menu)
+        menu.add_cascade(label="File", menu=filemenu)
+        filemenu.add_command(label="New", command=self.newfile)
+        filemenu.add_command(label="Open...", command=self.openfile)
+        filemenu.add_separator()
+        filemenu.add_command(label="Exit", command=self.root.destroy)
+
+        zahlenmenu = tk.Menu(menu)
+        menu.add_cascade(label="Zahlensysteme", menu=zahlenmenu)
+        zahlenmenu.add_command(label="Übung Binär", command=self.training)
+        helpmenu = tk.Menu(menu)
+        menu.add_cascade(label="Help", menu=helpmenu)
+        helpmenu.add_command(label="About...", command=self.about)
+
+        self.root.mainloop()
+
+
+# test0 = Btester()
+test1 = Btrainer()
+# main = Main_app()
