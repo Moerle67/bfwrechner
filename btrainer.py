@@ -106,7 +106,7 @@ class Btester(Btrainer):
             str_antw = "richtig"
             self.quest = number.Number()
             self.right_counter += 1
-            self.lbl_aufg.config(text=str(self.right_counter)+". Vorgabe")btrainer
+            self.lbl_aufg.config(text=str(self.right_counter)+". Vorgabe")
             self.lbl_vorg.config(text=str(self.quest))
             for i in range(8): 
                 self.var_cb[i].set(0)
@@ -119,6 +119,8 @@ class Btester(Btrainer):
     def cb_click(self):
         self.cal_erg()
 
+class Main_app():
+    pass
 
 test0 = Btester()
 # test1 = Btrainer()
