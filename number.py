@@ -30,6 +30,9 @@ class Number():
             answer = "0"*(len_answer-len(answer))+answer 
         return answer
 
+    def get_number(self):
+        return self.number
+    
     def __str__(self):
         return str(self.number)
     
