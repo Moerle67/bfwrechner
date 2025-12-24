@@ -82,13 +82,14 @@ class Btrainer:
 class Btester(Btrainer):
 
     def init_add(self):
+        self.right_counter = 1
         self.lbl_ges_hex.config(text="")
         self.lbl_ges_dez.config(text="")
         self.lbl_ges_bin.config(text="")
         self.lbl_ueber.config(text="Binärtrainer")
 
-        self.lblaufg = tk.Label(self.root, text="Vorgabe", font=(self.font, self.fontsize))
-        self.lblaufg.grid(row=4, column=0,columnspan=4)
+        self.lbl_aufg = tk.Label(self.root, text=str(self.right_counter)+". Vorgabe", font=(self.font, self.fontsize))
+        self.lbl_aufg.grid(row=4, column=0,columnspan=4)
 
         self.quest = number.Number()
         self.lbl_vorg = tk.Label(self.root, text=str(self.quest), font=(self.font, self.fontsize))
@@ -104,9 +105,11 @@ class Btester(Btrainer):
         if erg_dez == self.quest.get_dec():
             str_antw = "richtig"
             self.quest = number.Number()
+            self.right_counter += 1
+            self.lbl_aufg.config(text=str(self.right_counter)+". Vorgabe")btrainer
             self.lbl_vorg.config(text=str(self.quest))
             for i in range(8): 
-                self.var_cb[i]=tk.IntVar()
+                self.var_cb[i].set(0)
             self.cal_erg()
 
         else:
