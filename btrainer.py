@@ -5,13 +5,17 @@ class Btrainer:
     def init_add(self):
         pass
 
-    def __init__(self):
+    def __init__(self, top=-1):
         self.fontsize =24
         self.font = "Curier"
         self.elements = []
         x = 1
         y = 1
-        self.root = tk.Tk()
+        if top == -1:
+            self.root = tk.Tk()
+        else:
+            self.root = tk.Frame(top.root)
+            self.root.pack()
         self.root.title="BFW Rechner"
         self.var_cb = []
         wertigkeit = 128
@@ -20,11 +24,12 @@ class Btrainer:
             lbl1.grid(column=x+i, row=y)
 
             wertigkeit //= 2
-            self.var_cb.append(tk.IntVar())
+            # self.var_cb.append(tk.IntVar())
+            var = tk.IntVar()
             cb1 = tk.Checkbutton(self.root, 
                 text="", 
                 font=(self.font, self.fontsize), 
-                variable=self.var_cb[i],
+                variable=var,
                 command=self.cb_click
             )
             cb1.grid(column=x+i, row=y+1)
@@ -32,7 +37,7 @@ class Btrainer:
             lbl2 = tk.Label(self.root, text="0", font=(self.font, self.fontsize))
             lbl2.grid(column=x+i, row=y+2)
 
-            self.elements.append((lbl1, cb1, lbl2))
+            self.elements.append((lbl1, cb1, lbl2, var))
 
         self.lbl_ueber = tk.Label(self.root, text="Binärrechner", font=(self.font, int(self.fontsize*1.5)))
         self.lbl_ueber.grid(row=0, column=1, columnspan=8)
@@ -48,10 +53,9 @@ class Btrainer:
 
         self.init_add()  
 
-        self.root.mainloop()
+        # self.root.mainloop()
     
     def cal_erg(self):
-        print(self)
         erg_dez = 0
         erg_hex = 0
         wertigkeit = 128
@@ -59,7 +63,11 @@ class Btrainer:
         char_hex = "0123456789ABCDEF"
         werthex = 8   
         for i in range(8):
-            wert = self.var_cb[i].get()
+            # test = tk.IntVar()
+            # test=self.elements[i][1].get()
+            # print(self.elements[i][3].get())
+            wert = self.elements[i][3].get()
+            # wert = self.var_cb[i].get()
             erg_bin = erg_bin + str(wert)
             erg_hex += werthex * wert
             erg_dez += wertigkeit * wert
@@ -110,7 +118,7 @@ class Btester(Btrainer):
             self.lbl_aufg.config(text=str(self.right_counter)+". Vorgabe")
             self.lbl_vorg.config(text=str(self.quest))
             for i in range(8): 
-                self.var_cb[i].set(0)
+                self.elements[i][3].set(0)
             self.cal_erg()
 
         else:
@@ -129,10 +137,15 @@ class Main_app():
         pass
     
     def about(self):
-        pass
+        self.b = Btester(self)
 
-    def training(self):
-        test1 = Btrainer()  
+    def btrainer(self):
+        self.btraining = Btrainer(self)  
+        self.root.mainloop() 
+
+    def btester(self):
+        self.btest = Btester(self) 
+        self.root.mainloop() 
 
     def __init__(self):
         self.root = tk.Tk()
@@ -150,14 +163,18 @@ class Main_app():
 
         zahlenmenu = tk.Menu(menu)
         menu.add_cascade(label="Zahlensysteme", menu=zahlenmenu)
-        zahlenmenu.add_command(label="Übung Binär", command=self.training)
+        zahlenmenu.add_command(label="Übung Binär", command=self.btrainer)
+        zahlenmenu.add_command(label="Test  Binär", command=self.btester)
+        
         helpmenu = tk.Menu(menu)
         menu.add_cascade(label="Help", menu=helpmenu)
         helpmenu.add_command(label="About...", command=self.about)
 
         self.root.mainloop()
 
+        
+
 
 # test0 = Btester()
-test1 = Btrainer()
-# main = Main_app()
+# test1 = Btrainer()
+main = Main_app()
