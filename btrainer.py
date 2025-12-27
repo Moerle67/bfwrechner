@@ -5,7 +5,13 @@ class Btrainer:
     def init_add(self):
         pass
 
+    def destroy(self):
+        self.root.destroy()
+        if self.top != -1:
+            self.top.zahlenmenu.entryconfig("Binärrechner", state='normal')
+
     def __init__(self, top=-1):
+        self.top = top
         self.fontsize =24
         self.font = "Curier"
         self.elements = []
@@ -51,6 +57,9 @@ class Btrainer:
         self.lbl_ges_bin = tk.Label(self.root, text="0000.0000", font=(self.font, self.fontsize))
         self.lbl_ges_bin.grid(row=3, column=9)
 
+        self.btn_close = tk.Button(self.root, text="x", font=(self.font, int(self.fontsize/2)), command=self.destroy)
+        self.btn_close.grid(row=0, column=99)
+
         self.init_add()  
 
         # self.root.mainloop()
@@ -89,6 +98,10 @@ class Btrainer:
         self.lbl_ges_bin.config(text=str(erg_bin))
 
 class Btester(Btrainer):
+    def destroy(self):
+        self.root.destroy()
+        if self.top != -1:
+            self.top.zahlenmenu.entryconfig("Binärtrainer", state='normal')
 
     def init_add(self):
         self.right_counter = 1
