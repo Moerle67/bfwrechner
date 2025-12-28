@@ -147,7 +147,7 @@ class Btester(Btrainer):
         self.lbl_vorg = tk.Label(self.root, text=str(self.quest), font=(self.font, self.fontsize))
         self.lbl_vorg.grid(row=4, column=4, columnspan=2)
         self.antw = tk.Button(self.root, text="Abgabe", font=(self.font, self.fontsize), background="lightgreen", command=self.btn_ant)
-        self.antw.grid(row=4, column=7,columnspan=2)
+        self.antw.grid(row=4, column=9,columnspan=1)
         self.lbl_antw = tk.Label(self.root, text="", font=(self.font, self.fontsize))
         self.lbl_antw.grid(row=5, column=1, columnspan=7)
 
