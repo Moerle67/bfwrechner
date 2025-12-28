@@ -23,6 +23,7 @@ class Main_app():
         
     def setmenue(self):
         self.menu = tk.Menu(self.root)
+        self.root.resizable(False, False)
         self.root.config(menu=self.menu)
 
         self.filemenu = tk.Menu(self.menu)
