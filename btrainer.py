@@ -5,6 +5,12 @@ class Btrainer:
     def init_add(self):
         pass
 
+    def fontplus(self):
+        pass
+
+    def fontminus(self):
+        pass
+
     def destroy(self):
         self.root.destroy()
         if self.top != -1:
@@ -57,6 +63,10 @@ class Btrainer:
         self.lbl_ges_bin = tk.Label(self.root, text="0000.0000", font=(self.font, self.fontsize))
         self.lbl_ges_bin.grid(row=3, column=9)
 
+        self.btn_close = tk.Button(self.root, text="+", font=(self.font, int(self.fontsize/2)), command=self.fontplus)
+        self.btn_close.grid(row=0, column=97)
+        self.btn_close = tk.Button(self.root, text="-", font=(self.font, int(self.fontsize/2)), command=self.fontminus)
+        self.btn_close.grid(row=0, column=98)
         self.btn_close = tk.Button(self.root, text="x", font=(self.font, int(self.fontsize/2)), command=self.destroy)
         self.btn_close.grid(row=0, column=99)
 
