@@ -1,0 +1,4 @@
+bfwmain.spec
+build/*
+dist/*
+
