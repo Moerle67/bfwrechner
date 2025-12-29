@@ -15,11 +15,13 @@ class Main_app():
     def btrainer(self):
         self.btraining = Btrainer(self) 
         self.zahlenmenu.entryconfig("Binärrechner", state='disabled')
+        self.root.title('BFW Trainer')
 
 
     def btester(self):
         self.btest = Btester(self) 
         self.zahlenmenu.entryconfig("Binärtrainer", state='disabled')
+        self.root.title("BFW Tester")
         
     def setmenue(self):
         self.menu = tk.Menu(self.root)
@@ -44,7 +46,7 @@ class Main_app():
 
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title="BFW Trainingscenter"
+        self.root.title("BFW Trainingscenter")
 
         self.setmenue()
         self.root.mainloop()

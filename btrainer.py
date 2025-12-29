@@ -44,7 +44,6 @@ class Btrainer:
         else:
             self.root = tk.Frame(top.root)
             self.root.pack()
-        self.root.title="BFW Rechner"
         self.var_cb = []
         wertigkeit = 128
         for i in range(8):
@@ -144,6 +143,7 @@ class Btester(Btrainer):
         self.lbl_aufg.grid(row=4, column=0,columnspan=4)
 
         self.quest = number.Number()
+        self.count_wrong = 0
         self.lbl_vorg = tk.Label(self.root, text=str(self.quest), font=(self.font, self.fontsize))
         self.lbl_vorg.grid(row=4, column=4, columnspan=2)
         self.antw = tk.Button(self.root, text="Abgabe", font=(self.font, self.fontsize), background="lightgreen", command=self.btn_ant)
@@ -153,19 +153,25 @@ class Btester(Btrainer):
 
     def btn_ant(self):
         erg_dez, erg_bin, str_erg_hex = self.cal_erg()
-        print(erg_dez)
+        self.erg_dez = erg_dez
         if erg_dez == self.quest.get_dec():
+            self.count_wrong = 0
             str_antw = "richtig"
             self.quest = number.Number()
             self.right_counter += 1
             self.lbl_aufg.config(text=str(self.right_counter)+". Vorgabe")
             self.lbl_vorg.config(text=str(self.quest))
+            self.lbl_ges_dez.config(text="")
             for i in range(8): 
                 self.elements[i][3].set(0)
             self.cal_erg()
 
         else:
+            self.count_wrong +=1
             str_antw = "falsch"
+            if self.count_wrong >= 2:
+                self.lbl_ges_dez.config(text=str(self.erg_dez))
+
         self.lbl_antw.config(text = str_antw)
     
     def cb_click(self):
