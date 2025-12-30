@@ -13,19 +13,24 @@ class Main_app():
         pass
 
     def btrainer(self):
+        self.frame.destroy()
+        self.frame = tk.Frame(self.root)
+
         self.btraining = Btrainer(self) 
         self.zahlenmenu.entryconfig("Binärrechner", state='disabled')
         self.root.title('BFW Trainer')
 
 
     def btester(self):
+        self.frame.destroy()
+        self.frame = tk.Frame(self.root)
+
         self.btest = Btester(self) 
         self.zahlenmenu.entryconfig("Binärtrainer", state='disabled')
         self.root.title("BFW Tester")
         
     def setmenue(self):
         self.menu = tk.Menu(self.root)
-        self.root.resizable(False, False)
         self.root.config(menu=self.menu)
 
         self.filemenu = tk.Menu(self.menu)
@@ -47,6 +52,15 @@ class Main_app():
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("BFW Trainingscenter")
+        self.root.geometry("400x300")
+        self.root.resizable(False, False)
+        
+        self.frame = tk.Frame(self.root)
+        self.frame.pack()
+
+        print(self.frame)
+        self.lbl1 = tk.Label(self.frame, text="Viel Spaß beim Üben!\nEuer Ingo")
+        self.lbl1.pack()
 
         self.setmenue()
         self.root.mainloop()

@@ -16,7 +16,7 @@ class Btrainer:
         self.lbl_ueber.config(font=(self.font, int(self.fontsize*1.5)))
         self.btn_plus.config(font=(self.font, int(self.fontsize/2)))
         self.btn_minus.config(font=(self.font, int(self.fontsize/2)))
-        self.btn_close.config(font=(self.font, int(self.fontsize/2)))
+#        self.btn_close.config(font=(self.font, int(self.fontsize/2)))
 
     def fontplus(self):
         self.fontsize += 1
@@ -42,7 +42,9 @@ class Btrainer:
         if top == -1:
             self.root = tk.Tk()
         else:
-            self.root = tk.Frame(top.root)
+        #    self.root = tk.Frame(top.frame)
+            top.root.geometry("")
+            self.root = top.frame
             self.root.pack()
         self.var_cb = []
         wertigkeit = 128
@@ -82,8 +84,8 @@ class Btrainer:
         self.btn_plus.grid(row=0, column=97)
         self.btn_minus = tk.Button(self.root, text="-", font=(self.font, int(self.fontsize/2)), command=self.fontminus)
         self.btn_minus.grid(row=0, column=98)
-        self.btn_close = tk.Button(self.root, text="x", font=(self.font, int(self.fontsize/2)), command=self.destroy)
-        self.btn_close.grid(row=0, column=99)
+        #self.btn_close = tk.Button(self.root, text="x", font=(self.font, int(self.fontsize/2)), command=self.destroy)
+        #self.btn_close.grid(row=0, column=99)
 
         self.init_add()  
 
