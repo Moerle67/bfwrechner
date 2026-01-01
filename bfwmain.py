@@ -70,7 +70,7 @@ class Main_app():
         self.frame = tk.Frame(self.root)
         self.frame.pack()
 
-        self.lbl1 = tk.Label(self.frame, text="Viel Spaß beim Üben!\nEuer Ingo")
+        self.lbl1 = tk.Label(self.frame, text="Viel Spaß beim Üben!\nEuer Moerle")
         self.lbl1.pack()
 
         self.setmenue()
