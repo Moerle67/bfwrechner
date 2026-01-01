@@ -12,11 +12,18 @@ class Main_app():
     def about(self):
         pass
 
+    def free_menu(self):
+        # Alle Menus aktivieren
+        # 
+        self.zahlenmenu.entryconfig("Binärrechner", state='active')
+        self.zahlenmenu.entryconfig("Binärtrainer", state='active')
+
     def btrainer(self):
         self.frame.destroy()
         self.frame = tk.Frame(self.root)
 
-        self.btraining = Btrainer(self) 
+        self.btraining = Btrainer(self)
+        self.free_menu() 
         self.zahlenmenu.entryconfig("Binärrechner", state='disabled')
         self.root.title('BFW Trainer')
 
@@ -26,6 +33,7 @@ class Main_app():
         self.frame = tk.Frame(self.root)
 
         self.btest = Btester(self) 
+        self.free_menu()
         self.zahlenmenu.entryconfig("Binärtrainer", state='disabled')
         self.root.title("BFW Tester")
         
@@ -58,7 +66,6 @@ class Main_app():
         self.frame = tk.Frame(self.root)
         self.frame.pack()
 
-        print(self.frame)
         self.lbl1 = tk.Label(self.frame, text="Viel Spaß beim Üben!\nEuer Ingo")
         self.lbl1.pack()
 
