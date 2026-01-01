@@ -1,6 +1,8 @@
 import tkinter as tk
 
 from btrainer import Btester, Btrainer
+from bhdtrainer import Bhdtrainer
+
 class Main_app():
 
     def newfile(self):
@@ -15,8 +17,19 @@ class Main_app():
     def free_menu(self):
         # Alle Menus aktivieren
         # 
-        self.zahlenmenu.entryconfig("Binärrechner", state='active')
-        self.zahlenmenu.entryconfig("Binärtrainer", state='active')
+        self.zahlenmenu.entryconfig(self.str_bhd_trainer, state='active')
+        self.zahlenmenu.entryconfig(self.str_brechner, state='active')
+        self.zahlenmenu.entryconfig(self.str_btrainer, state='active')
+
+    def bhdtrainer(self):
+        self.frame.destroy()
+        self.frame = tk.Frame(self.root)
+
+        self.btraining = Bhdtrainer(self)
+        self.free_menu() 
+        self.zahlenmenu.entryconfig(self.str_bhd_trainer, state='disabled')
+        self.root.title(self.bhdtrainer)
+        
 
     def btrainer(self):
         self.frame.destroy()
@@ -50,7 +63,7 @@ class Main_app():
 
         self.zahlenmenu = tk.Menu(self.menu)
         self.menu.add_cascade(label="Zahlensysteme", menu=self.zahlenmenu)
-        self.zahlenmenu.add_command(label=self.s, command=self.btrainer)
+        self.zahlenmenu.add_command(label=self.str_brechner, command=self.btrainer)
         self.zahlenmenu.add_command(label=self.str_btrainer, command=self.btester)
         self.zahlenmenu.add_command(label=self.str_bhd_trainer, command=self.bhdtrainer)
         
