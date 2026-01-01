@@ -34,7 +34,7 @@ class Main_app():
 
         self.btest = Btester(self) 
         self.free_menu()
-        self.zahlenmenu.entryconfig("Binärtrainer", state='disabled')
+        self.zahlenmenu.entryconfig(self.str_btrainer, state='disabled')
         self.root.title("BFW Tester")
         
     def setmenue(self):
@@ -50,14 +50,18 @@ class Main_app():
 
         self.zahlenmenu = tk.Menu(self.menu)
         self.menu.add_cascade(label="Zahlensysteme", menu=self.zahlenmenu)
-        self.zahlenmenu.add_command(label="Binärrechner", command=self.btrainer)
-        self.zahlenmenu.add_command(label="Binärtrainer", command=self.btester)
+        self.zahlenmenu.add_command(label=self.s, command=self.btrainer)
+        self.zahlenmenu.add_command(label=self.str_btrainer, command=self.btester)
+        self.zahlenmenu.add_command(label=self.str_bhd_trainer, command=self.bhdtrainer)
         
         self.helpmenu = tk.Menu(self.menu)
         self.menu.add_cascade(label="Help", menu=self.helpmenu)
         self.helpmenu.add_command(label="About...", command=self.about)
 
     def __init__(self):
+        self.str_btrainer = "Binärtrainer"
+        self.str_brechner = "Binärrechner"
+        self.str_bhd_trainer = "BIN HEX DEZ Trainer"
         self.root = tk.Tk()
         self.root.title("BFW Trainingscenter")
         self.root.geometry("400x300")
