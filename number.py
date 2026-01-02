@@ -1,11 +1,26 @@
 import random
 
 class Number():
-    def __init__(self, number=-1):
-        if number == -1:
-            self.number = self.set_rnd()
-        else:
-            self.number = number
+    def __init__(self, number=-1, zsystem = "d"):
+        if zsystem == "d":
+            # decimal
+            if number == -1:
+                self.number = self.set_rnd()
+            else:
+                self.number = number
+        elif zsystem == "b":
+            # binär
+            self.set_binaer(number)
+
+    def set_binaer(self, nstring):
+        zahl = 0
+        for ziffer in nstring:
+            if ziffer in "1Ii":
+                zahl *= 2
+                zahl += 1
+            elif ziffer == "0":
+                zahl *= 2
+        self.number = zahl
 
     def set_rnd(self, max_number=-1):
         if max_number == -1:
