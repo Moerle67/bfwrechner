@@ -10,9 +10,12 @@ class Number():
                 self.number = number
         elif zsystem == "b":
             # binär
-            self.set_binaer(number)
+            self.set_bin(number)
+        elif zsystem == "h":
+            # hexadezimal
+            self.set_hex(number)
 
-    def set_binaer(self, nstring):
+    def set_bin(self, nstring):
         zahl = 0
         for ziffer in nstring:
             if ziffer in "1Ii":
