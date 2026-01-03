@@ -1,4 +1,4 @@
 from number import Number
 
-test = Number("I00I.1111","b")
-print(test)
+test = Number()
+print(test, test.get_hex())

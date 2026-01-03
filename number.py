@@ -33,7 +33,7 @@ class Number():
     def get_dec(self):
         return self.number
     
-    def get_bin(self, len_answer=8, sign="I"):
+    def get_bin(self, len_answer=8, sign="1"):
         answer = ""
         loc_number = self.number
         while loc_number > 0:
@@ -46,6 +46,12 @@ class Number():
         if len(answer) < len_answer:
             # Links mut Nullen auffüllen
             answer = "0"*(len_answer-len(answer))+answer 
+        return answer
+    
+    def get_hex(self):
+        letters = "0123456789ABCDEF"
+        answer = letters[self.number//16]
+        answer += str(letters[self.number%16])
         return answer
 
     def get_number(self):
