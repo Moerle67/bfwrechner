@@ -10,7 +10,14 @@ class Bhdtrainer(Bbasis):
         
         self.fontsize=16
 
-        self.anzahl_numbers = 15
+        self.anzahl_numbers = 10
+
+        self.new()
+    
+    def new(self):
+        # Neustart 
+        for widget in self.root.winfo_children():
+                widget.destroy()
 
         # Zufallszahlen erstellen
         self.init_number()
@@ -46,11 +53,36 @@ class Bhdtrainer(Bbasis):
             else:
                 inp3.config(state=tk.DISABLED)
                 var3.set(str(self.lst_number[i][0]))
-        self.antw = tk.Button(self.root, text="Abgabe", font=(self.font, self.fontsize), background="lightgreen", command=self.btn_ant)
+            self.elements.append(((inp1,var1), (inp2, var2), (inp3, var3)))    
+        self.antw = tk.Button(self.root, text="Abgabe", font=(self.font, self.fontsize), background="lightyellow", command=self.btn_ant)
         self.antw.grid(row=102+self.anzahl_numbers, column=3,columnspan=1)
 
     def btn_ant(self):
-        pass    
+        correct = True
+        for i in range(self.anzahl_numbers):
+            # Binaer
+            if self.lst_number[i][0].get_dec() == Number(self.elements[i][0][1].get(),"b").get_dec():
+                # print(f"Binär Zeile {i+1} korrekt")
+                self.elements[i][0][0].config(state=tk.DISABLED)
+            else:
+                print(f"Binär Zeile {i+1} falsch {Number(self.elements[i][0][1].get(),"b").get_dec()}")
+                correct = False
+            # Secimal
+            if self.lst_number[i][0].get_dec() == Number(self.elements[i][1][1].get(),"h").get_dec():
+                # print(f"Hex Zeile {i+1} korrekt")
+                self.elements[i][1][0].config(state=tk.DISABLED)
+            else:
+                print(f"Hex Zeile {i+1} falsch {Number(self.elements[i][1][1].get(),"h").get_dec()}")
+                correct = False
+            # Dezimal
+            if self.lst_number[i][0].get_dec() == Number(self.elements[i][2][1].get(),"d").get_dec():
+                #print(f"Dec Zeile {i+1} korrekt")
+                self.elements[i][2][0].config(state=tk.DISABLED)
+            else:
+                print(f"Dec Zeile {i+1} falsch {Number(self.elements[i][2][1].get(),"d").get_dec()}")
+                correct = False
+            if correct:
+               self.antw.config(text="Sehr gut - Neustart", background="lightgreen", command = self.new) 
 
     def init_number(self):
         ##

@@ -7,7 +7,13 @@ class Number():
             if number == -1:
                 self.number = self.set_rnd()
             else:
-                self.number = number
+                if isinstance(number, str):
+                    if number.isdigit():
+                        self.number=int(number)
+                    else:
+                        self.number = -1
+                else:
+                    self.number = number
         elif zsystem == "b":
             # binär
             self.set_bin(number)
@@ -24,6 +30,15 @@ class Number():
             elif ziffer == "0":
                 zahl *= 2
         self.number = zahl
+
+    def set_hex(self, nstring):
+        letters = "0123456789ABCDEF"
+        nstring = nstring.upper()
+        if len(nstring)==2:
+            number = letters.find(nstring[0])*16+letters.find(nstring[1])
+        else:
+            number = -1
+        self.number = number
 
     def set_rnd(self, max_number=-1):
         if max_number == -1:
