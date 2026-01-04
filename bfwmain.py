@@ -28,7 +28,7 @@ class Main_app():
         self.btraining = Bhdtrainer(self)
         self.free_menu() 
         self.zahlenmenu.entryconfig(self.str_bhd_trainer, state='disabled')
-        self.root.title(self.bhdtrainer)
+        self.root.title(self.str_bhd_trainer)
         
 
     def btrainer(self):
