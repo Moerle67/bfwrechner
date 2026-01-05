@@ -41,3 +41,18 @@ class IPv4:
                 counter = 0
         return answer[1:]
     
+    def get_nid(self):
+        lst_ip = self.get_str().split("/")[0].split(".")
+        lst_mask = self.get_mask().split(".")
+        lst_nid = []
+        for i in range(4):
+            lst_nid.append(int(lst_ip[i]) & int(lst_mask[i]))
+        return f"{lst_nid[0]}.{lst_nid[1]}.{lst_nid[2]}.{lst_nid[3]}"
+        
+    def get_bc(self):
+        lst_ip = self.get_str().split("/")[0].split(".")
+        lst_mask = self.get_mask().split(".")
+        lst_bc = []
+        for i in range(4):
+            lst_bc.append(256+(int(lst_ip[i]) | ~int(lst_mask[i])))
+        return f"{lst_bc[0]}.{lst_bc[1]}.{lst_bc[2]}.{lst_bc[3]}"
