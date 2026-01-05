@@ -1,4 +1,5 @@
 from ipv4 import IPv4
-number1 = IPv4("255.255.255.255/24")
+number1 = IPv4(input("IPv4: "))
 
-print(number1.cidr, number1.number)
+print(number1.get_str(256))
+print(number1.get_mask())
