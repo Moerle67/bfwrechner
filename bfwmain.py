@@ -21,6 +21,8 @@ class Main_app():
         self.zahlenmenu.entryconfig(self.str_brechner, state='active')
         self.zahlenmenu.entryconfig(self.str_btrainer, state='active')
 
+        self.subnetting.entryconfig(self.str_cidr, state='active')
+
     def bhdtrainer(self):
         self.frame.destroy()
         self.frame = tk.Frame(self.root)
@@ -66,7 +68,11 @@ class Main_app():
         self.zahlenmenu.add_command(label=self.str_brechner, command=self.btrainer)
         self.zahlenmenu.add_command(label=self.str_btrainer, command=self.btester)
         self.zahlenmenu.add_command(label=self.str_bhd_trainer, command=self.bhdtrainer)
-        
+
+        self.subnetting = tk.Menu(self.menu)
+        self.menu.add_cascade(label="Subnetting", menu=self.subnetting)
+        self.subnetting.add_command(label=self.str_cidr, command=self.btrainer)
+
         self.helpmenu = tk.Menu(self.menu)
         self.menu.add_cascade(label="Help", menu=self.helpmenu)
         self.helpmenu.add_command(label="About...", command=self.about)
@@ -75,6 +81,8 @@ class Main_app():
         self.str_btrainer = "Binärtrainer"
         self.str_brechner = "Binärrechner"
         self.str_bhd_trainer = "BIN HEX DEZ Trainer"
+        self.str_cidr = "CIDR"
+
         self.root = tk.Tk()
         self.root.title("BFW Trainingscenter")
         self.root.geometry("400x300")
