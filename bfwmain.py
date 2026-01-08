@@ -2,6 +2,7 @@ import tkinter as tk
 
 from btrainer import Btester, Btrainer
 from bhdtrainer import Bhdtrainer
+from explmask import Explmask
 
 class Main_app():
 
@@ -51,6 +52,15 @@ class Main_app():
         self.free_menu()
         self.zahlenmenu.entryconfig(self.str_btrainer, state='disabled')
         self.root.title("BFW Tester")
+
+    def explmask(self):
+        self.frame.destroy()
+        self.frame = tk.Frame(self.root)
+
+        self.btest = Explmask(self) 
+        self.free_menu()
+        self.subnetting.entryconfig(self.str_cidr, state='disabled')
+        self.root.title("BFW Tester")
         
     def setmenue(self):
         self.menu = tk.Menu(self.root)
@@ -71,7 +81,7 @@ class Main_app():
 
         self.subnetting = tk.Menu(self.menu)
         self.menu.add_cascade(label="Subnetting", menu=self.subnetting)
-        self.subnetting.add_command(label=self.str_cidr, command=self.btrainer)
+        self.subnetting.add_command(label=self.str_cidr, command=self.explmask)
 
         self.helpmenu = tk.Menu(self.menu)
         self.menu.add_cascade(label="Help", menu=self.helpmenu)

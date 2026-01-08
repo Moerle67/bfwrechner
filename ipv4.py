@@ -1,17 +1,23 @@
 from number import Number
+import random
 
 class IPv4:
-    def __init__(self, number):
-        try:
-            self.cidr = int(number.split("/")[1])
-            lst_number = number.split("/")[0].split(".")
-            self.number = 0
-            for oktet in lst_number:
-                self.number *= 256
-                self.number += int(oktet) 
-        except :
-            self.number = -1    
-            self.cidr = -1
+    def __init__(self, number=-1):
+        if number == -1:
+            # Zufallswert 
+            self.number=random.randint(0, 4294967296)
+            self.cidr = random.randint(0, 14) + 16
+        else :
+            try:
+                self.cidr = int(number.split("/")[1])
+                lst_number = number.split("/")[0].split(".")
+                self.number = 0
+                for oktet in lst_number:
+                    self.number *= 256
+                    self.number += int(oktet) 
+            except :
+                self.number = -1    
+                self.cidr = -1
 
     def __str__(self):
         pass
@@ -56,3 +62,14 @@ class IPv4:
         for i in range(4):
             lst_bc.append(256+(int(lst_ip[i]) | ~int(lst_mask[i])))
         return f"{lst_bc[0]}.{lst_bc[1]}.{lst_bc[2]}.{lst_bc[3]}"
+    
+    def get_numbers(self):
+        lst_ip = self.get_str().split("/")[0].split(".")
+        lst_answer = []
+        for number in lst_ip:
+            lst_answer.append(Number(int(number)))
+        return lst_answer
+
+    def get_bin(self):
+        lst_number = self.get_numbers()
+        return f"{lst_number[0].get_bin()}.{lst_number[1].get_bin()}.{lst_number[2].get_bin()}.{lst_number[3].get_bin()}"
